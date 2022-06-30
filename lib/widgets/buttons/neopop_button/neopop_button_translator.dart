@@ -27,8 +27,8 @@ class NeoPopButtonTranslator extends StatefulWidget {
   /// The depth of the button.
   final double depth;
 
-  /// The duration of the animation in milliseconds.
-  final int animationDuration;
+  /// The duration of the animation.
+  final Duration animationDuration;
 
   /// The duration of the forward animation.
   final Duration? forwardDuration;
@@ -55,9 +55,9 @@ class _NeoPopButtonTranslatorState extends State<NeoPopButtonTranslator>
       lowerBound: 0,
       upperBound: 1,
       duration: widget.forwardDuration ??
-          Duration(milliseconds: widget.animationDuration ~/ 2),
+          Duration(milliseconds: widget.animationDuration.inMilliseconds ~/ 2),
       reverseDuration: widget.reverseDuration ??
-          Duration(milliseconds: widget.animationDuration ~/ 2),
+          Duration(milliseconds: widget.animationDuration.inMilliseconds ~/ 2),
     );
   }
 

@@ -1,4 +1,5 @@
 <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="-0.5" y="-0.5" width="39.3175" height="39.3175" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 39.4068 39.8445)" stroke="white" stroke-opacity="0.5"/>
-<path d="M23.9133 28.0161L16.5828 20.6857L23.9133 13.3552" stroke="white" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="square"/>
+<rect x="-0.5" y="-0.5" width="39.3175" height="39.3175" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 39.9068 39.8445)" fill="#0D0D0D" stroke="#3D3D3D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24.4133 28.0161L17.0828 20.6857L24.4133 13.3552" fill="#0D0D0D"/>
+<path d="M24.4133 28.0161L17.0828 20.6857L24.4133 13.3552" stroke="white" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="square"/>
 </svg>
