@@ -176,9 +176,15 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
   late CurvedAnimation animation;
   late double posFactor;
   late NeoPopTiltedButtonDecoration decoration;
+  late Duration _floatingControllerDuration;
+  late Duration _nonFloatingControllerDuration;
 
   @override
   void initState() {
+    _floatingControllerDuration =
+        widget.floatingDuration ?? kTiltedButtonFloatingDuration;
+    _nonFloatingControllerDuration =
+        widget.tapDuration ?? kTiltedButtonTapDuration;
     posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
     decoration = widget.decoration ??
         (widget.color != null
@@ -189,8 +195,8 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     controller = AnimationController(
       vsync: this,
       duration: widget.isFloating
-          ? (widget.floatingDuration ?? kTiltedButtonFloatingDuration)
-          : (widget.tapDuration ?? kTiltedButtonTapDuration),
+          ? _floatingControllerDuration
+          : _nonFloatingControllerDuration,
     );
 
     animation = CurvedAnimation(
@@ -199,11 +205,7 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     );
 
     bool enabled = widget.enabled || widget.onTapUp != null;
-    if (enabled && widget.isFloating) {
-      controller.forward();
-      controller.addStatusListener(floatingStatusListener);
-    }
-
+    if (enabled && widget.isFloating) _startFloating();
     super.initState();
   }
 
@@ -211,6 +213,34 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  void _startFloating() {
+    controller.repeat(reverse: true);
+  }
+
+  Future _moveDown() {
+    return controller.animateTo(
+      controller.upperBound,
+      duration: widget.tapDuration ?? const Duration(milliseconds: 100),
+    );
+  }
+
+  Future _moveUp() {
+    return controller.animateTo(
+      controller.lowerBound,
+      duration: widget.tapDuration ?? const Duration(milliseconds: 100),
+    );
+  }
+
+  Future _continueDown() {
+    final tapDur = widget.tapDuration ?? kTiltedButtonTapDuration;
+    final pendingDurMilliSec = tapDur.inMilliseconds * (1 - controller.value);
+    final duration = Duration(milliseconds: pendingDurMilliSec.toInt());
+    return controller.animateTo(
+      controller.upperBound,
+      duration: duration,
+    );
   }
 
   @override
@@ -270,26 +300,34 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     button = GestureDetector(
       onTapDown: (_) {
         if (floating) {
-          floatingOnTapDown();
+          posFactor = 2;
+          _moveDown();
         } else {
           controller.forward();
         }
-
         widget.onTapDown?.call();
       },
       onTapUp: (_) async {
-        await waitForAnimComplete();
         if (floating) {
-          await floatingOnTapUp();
+          if (!controller.isCompleted) {
+            await _continueDown();
+          }
+          await _moveUp();
+          posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
+          _startFloating();
         } else {
-          controller.reverse();
+          if (!controller.isCompleted) {
+            await controller.forward();
+          }
+          await controller.reverse();
         }
 
         widget.onTapUp?.call();
       },
       onTapCancel: () async {
         if (floating) {
-          await floatingOnTapCancel();
+          posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
+          _startFloating();
         } else {
           controller.reverse();
         }
@@ -362,42 +400,5 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
       () async =>
           await controller.animateTo(1.0, duration: duration).timeout(duration),
     );
-  }
-
-  void floatingStatusListener(status) async {
-    if (status == AnimationStatus.completed) {
-      if (mounted) controller.reverse();
-    } else if (status == AnimationStatus.dismissed) {
-      await Future.delayed(widget.floatingDelay ?? kTiltedButtonFloatingDelay);
-      if (mounted) controller.forward();
-    }
-  }
-
-  void floatingOnTapDown() {
-    posFactor = 2;
-    controller.removeStatusListener(floatingStatusListener);
-    controller.animateTo(1.0,
-        duration: widget.tapDuration ?? kTiltedButtonTapDuration);
-  }
-
-  Future<void> floatingOnTapUp() async {
-    controller.addStatusListener(floatingStatusListener);
-    final duration = widget.tapDuration ?? kTiltedButtonTapDuration;
-    safeFuture(
-      () async =>
-          await controller.animateTo(0.0, duration: duration).timeout(duration),
-    );
-
-    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
-  }
-
-  Future<void> floatingOnTapCancel() async {
-    controller.addStatusListener(floatingStatusListener);
-    final duration = widget.tapDuration ?? kTiltedButtonTapDuration;
-    safeFuture(
-      () async =>
-          await controller.animateTo(0.0, duration: duration).timeout(duration),
-    );
-    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
   }
 }
