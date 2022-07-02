@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:neopop/utils/color_utils.dart';
+import 'package:neopop/utils/constants.dart';
 
 part 'neopop_button_utils.dart';
 part 'neopop_button_clippers.dart';
@@ -69,15 +70,15 @@ class NeoPopButton extends StatefulWidget {
     this.onTapUp,
     this.onTapDown,
     this.onLongPress,
-    this.disabledColor = const Color.fromRGBO(138, 138, 138, 1),
+    this.disabledColor = kDisabledButtonColor,
     this.parentColor = Colors.transparent,
     this.grandparentColor = Colors.transparent,
     this.buttonPosition = Position.fullBottom,
-    this.animationDuration = const Duration(milliseconds: 50),
+    this.animationDuration = kbuttonDuration,
     this.forwardDuration,
     this.reverseDuration,
     this.border,
-    this.depth = 3,
+    this.depth = kButtonDepth,
     this.enabled = true,
     this.shadowColor,
     this.rightShadowColor,

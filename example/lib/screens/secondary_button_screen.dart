@@ -25,8 +25,8 @@ class PopSecondaryBtnScreen extends StatelessWidget {
           depth: kButtonDepth,
           animationDuration: kButtonAnimationDuration,
           buttonPosition: Position.center,
-          onTapUp: () => HapticFeedback.vibrate(),
-          onTapDown: () => HapticFeedback.vibrate(),
+          onTapUp: () => HapticFeedback.lightImpact(),
+          onTapDown: () => HapticFeedback.lightImpact(),
           border: const Border.fromBorderSide(
             BorderSide(color: kBorderColorWhite, width: kButtonBorderWidth),
           ),
@@ -43,8 +43,8 @@ class PopSecondaryBtnScreen extends StatelessWidget {
           depth: kButtonDepth,
           animationDuration: kButtonAnimationDuration,
           buttonPosition: Position.fullBottom,
-          onTapUp: () => HapticFeedback.vibrate(),
-          onTapDown: () => HapticFeedback.vibrate(),
+          onTapUp: () => HapticFeedback.lightImpact(),
+          onTapDown: () => HapticFeedback.lightImpact(),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             child: SvgPicture.asset('assets/svg/cta_text_secondary.svg'),
@@ -57,8 +57,8 @@ class PopSecondaryBtnScreen extends StatelessWidget {
           depth: kButtonDepth,
           animationDuration: kButtonAnimationDuration,
           buttonPosition: Position.center,
-          onTapUp: () => HapticFeedback.vibrate(),
-          onTapDown: () => HapticFeedback.vibrate(),
+          onTapUp: () => HapticFeedback.lightImpact(),
+          onTapDown: () => HapticFeedback.lightImpact(),
           border: const Border.fromBorderSide(
             BorderSide(color: kBorderColorWhite, width: kButtonBorderWidth),
           ),

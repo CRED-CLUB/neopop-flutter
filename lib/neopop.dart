@@ -10,5 +10,4 @@ library neopop;
 export 'widgets/buttons/neopop_button/neopop_button.dart';
 export 'widgets/buttons/neopop_tilted_button/neopop_tilted_button.dart';
 export 'widgets/cards/neopop_card.dart';
-export 'widgets/top_notch.dart';
 export 'widgets/neopop_shimmer.dart';

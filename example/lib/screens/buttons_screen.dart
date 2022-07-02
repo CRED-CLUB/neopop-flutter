@@ -43,8 +43,8 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
           const SizedBox(height: 15),
           NeoPopTiltedButton(
             isFloating: true,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             decoration: const NeoPopTiltedButtonDecoration(
               color: kPopYellowColor,
               plunkColor: kPlunkColorYellow,
@@ -64,8 +64,8 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
           const SizedBox(height: 15),
           NeoPopTiltedButton(
             color: kPrimaryButtonColor,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 80.0,
@@ -83,8 +83,8 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
             rightShadowColor: kShadowColorGreen,
             animationDuration: kButtonAnimationDuration,
             depth: kButtonDepth,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             border: Border.all(
               color: kBorderColorGreen,
               width: kButtonBorderWidth,

@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:neopop/utils/color_utils.dart';
+import 'package:neopop/utils/constants.dart';
 
 part 'neopop_card_painter.dart';
 
@@ -68,7 +69,7 @@ class NeoPopCard extends StatelessWidget {
       painter: NeoPopCardPainter(
         hShadowColor: hShadowColor ?? hShadow?.toColor(),
         vShadowColor: vShadowColor ?? vShadow?.toColor(),
-        depth: depth ?? 3.0,
+        depth: depth ?? kButtonDepth,
       ),
       size: size ?? Size.zero,
       willChange: false,
