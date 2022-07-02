@@ -48,8 +48,8 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
             decoration: const NeoPopTiltedButtonDecoration(
               color: kPopYellowColor,
               plunkColor: kPlunkColorYellow,
+              shadowColor: kTiltedButtonShadowColor,
               showShimmer: true,
-              shadowColor: Colors.black,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(

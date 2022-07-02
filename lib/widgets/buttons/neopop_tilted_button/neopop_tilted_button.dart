@@ -199,10 +199,7 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     );
 
     bool enabled = widget.enabled || widget.onTapUp != null;
-    if (enabled && widget.isFloating) {
-      controller.forward();
-      controller.addStatusListener(floatingStatusListener);
-    }
+    if (enabled && widget.isFloating) startFloating();
 
     super.initState();
   }
@@ -259,8 +256,9 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     // if disabled then return the button
     if (!enabled) {
       return Padding(
-        padding:
-            EdgeInsets.only(bottom: widget.buttonDepth ?? kTiltedButtonDepth),
+        padding: EdgeInsets.only(
+          bottom: widget.buttonDepth ?? kTiltedButtonDepth,
+        ),
         child: button,
       );
     }
@@ -278,18 +276,18 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
         widget.onTapDown?.call();
       },
       onTapUp: (_) async {
-        await waitForAnimComplete();
         if (floating) {
           await floatingOnTapUp();
         } else {
-          controller.reverse();
+          if (!controller.isCompleted) await controller.forward();
+          await controller.reverse();
         }
 
         widget.onTapUp?.call();
       },
       onTapCancel: () async {
         if (floating) {
-          await floatingOnTapCancel();
+          floatingOnTapCancel();
         } else {
           controller.reverse();
         }
@@ -302,7 +300,8 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     if (floating) {
       button = Padding(
         padding: EdgeInsets.only(
-            bottom: widget.shadowDistance ?? kTiltedButtonShadowDistance),
+          bottom: widget.shadowDistance ?? kTiltedButtonShadowDistance,
+        ),
         child: CustomPaint(
           isComplex: true,
           painter: NeoPopTiltedBtnShadowPainter(
@@ -354,14 +353,22 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     return button;
   }
 
-  Future<void> waitForAnimComplete() async {
-    final tapDur = widget.tapDuration ?? kTiltedButtonTapDuration;
-    final pendingDurMilliSec = tapDur.inMilliseconds * controller.value;
-    final duration = Duration(milliseconds: pendingDurMilliSec.toInt());
-    safeFuture(
-      () async =>
-          await controller.animateTo(1.0, duration: duration).timeout(duration),
-    );
+  Future<void> floatingOnTapUp() async {
+    if (!controller.isCompleted) await continueDown();
+    await moveUp();
+    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
+    startFloating();
+  }
+
+  void floatingOnTapDown() {
+    posFactor = 2;
+    controller.removeStatusListener(floatingStatusListener);
+    moveDown();
+  }
+
+  void floatingOnTapCancel() {
+    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
+    startFloating();
   }
 
   void floatingStatusListener(status) async {
@@ -373,31 +380,29 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     }
   }
 
-  void floatingOnTapDown() {
-    posFactor = 2;
-    controller.removeStatusListener(floatingStatusListener);
-    controller.animateTo(1.0,
-        duration: widget.tapDuration ?? kTiltedButtonTapDuration);
+  void startFloating() {
+    controller.addStatusListener(floatingStatusListener);
+    controller.forward();
   }
 
-  Future<void> floatingOnTapUp() async {
-    controller.addStatusListener(floatingStatusListener);
-    final duration = widget.tapDuration ?? kTiltedButtonTapDuration;
-    safeFuture(
-      () async =>
-          await controller.animateTo(0.0, duration: duration).timeout(duration),
+  Future<void> moveDown() {
+    return controller.animateTo(
+      controller.upperBound,
+      duration: widget.tapDuration ?? kTiltedButtonTapDuration,
     );
-
-    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
   }
 
-  Future<void> floatingOnTapCancel() async {
-    controller.addStatusListener(floatingStatusListener);
-    final duration = widget.tapDuration ?? kTiltedButtonTapDuration;
-    safeFuture(
-      () async =>
-          await controller.animateTo(0.0, duration: duration).timeout(duration),
+  Future<void> moveUp() {
+    return controller.animateTo(
+      controller.lowerBound,
+      duration: widget.tapDuration ?? kTiltedButtonTapDuration,
     );
-    posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
+  }
+
+  Future<void> continueDown() {
+    final tapDur = widget.tapDuration ?? kTiltedButtonTapDuration;
+    final pendingDurMilliSec = tapDur.inMilliseconds * (1 - controller.value);
+    final duration = Duration(milliseconds: pendingDurMilliSec.toInt());
+    return controller.animateTo(controller.upperBound, duration: duration);
   }
 }
