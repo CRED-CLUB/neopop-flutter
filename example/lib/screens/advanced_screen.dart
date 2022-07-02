@@ -43,7 +43,7 @@ class _AdjacentButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
+      width: 190,
       child: Column(
         children: [
           Row(
@@ -74,13 +74,13 @@ class _ConfigButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
-      height: 200,
+      width: 190,
+      height: 190,
       child: NeoPopCard(
-        color: kBackgroundColor,
+        color: kCardColor,
         depth: kButtonDepth,
-        vShadowColor: kShadowColorGrey,
-        hShadowColor: kShadowColorLightGrey,
+        vShadowColor: kCardVShadowColor,
+        hShadowColor: kCardHShadowColor,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -137,7 +137,7 @@ class _BlackButton extends StatelessWidget {
         animationDuration: kButtonAnimationDuration,
         bottomShadowColor: kShadowColorDarkGreen,
         rightShadowColor: kShadowColorGreen,
-        parentColor: kShadowColorLightGrey,
+        parentColor: kCardColor,
         grandparentColor: kBackgroundColor,
         buttonPosition: position,
         depth: kButtonDepth,

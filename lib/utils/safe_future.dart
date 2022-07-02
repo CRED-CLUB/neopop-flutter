@@ -5,10 +5,14 @@
 /// You may obtain a copy of the License in the LICENSE file or at
 /// http://www.apache.org/licenses/LICENSE-2.0
 
-library neopop;
+typedef SafeFutureFunction<T> = Future<T> Function();
 
-export 'widgets/buttons/neopop_button/neopop_button.dart';
-export 'widgets/buttons/neopop_tilted_button/neopop_tilted_button.dart';
-export 'widgets/cards/neopop_card.dart';
-export 'widgets/top_notch.dart';
-export 'widgets/neopop_shimmer.dart';
+Future<T?> safeFuture<T>(SafeFutureFunction<T?> func, {T? fallback}) async {
+  T? generic;
+  try {
+    generic = await func.call();
+  } catch (_) {
+    generic = fallback;
+  }
+  return generic;
+}

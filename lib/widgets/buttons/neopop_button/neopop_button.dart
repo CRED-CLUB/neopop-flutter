@@ -45,7 +45,7 @@ class NeoPopButton extends StatefulWidget {
   /// animation when the button is pressed. Forward and reversed animation
   /// durations can be specified separately using the [forwardDuration]
   /// and [reversedDuration] parameters. By default, the animation duration
-  /// is set to 50.0.
+  /// is set to 50.0 milliseconds.
   ///
   /// The [onTapUp] parameter specifies the callback that is called when
   /// the button is tapped. The [onTapDown] parameter specifies the callback
@@ -73,7 +73,7 @@ class NeoPopButton extends StatefulWidget {
     this.parentColor = Colors.transparent,
     this.grandparentColor = Colors.transparent,
     this.buttonPosition = Position.fullBottom,
-    this.animationDuration = 50,
+    this.animationDuration = const Duration(milliseconds: 50),
     this.forwardDuration,
     this.reverseDuration,
     this.border,
@@ -176,11 +176,11 @@ class NeoPopButton extends StatefulWidget {
   /// forwardDuration = animationDuration ~/ 2
   /// reverseDuration = animationDuration ~/ 2
   ///
-  /// The default value is 50.0.
+  /// The default value is 50.0 milliseconds.
   ///
   /// In the case when different durations are needed, use the [forwardDuration] and
   /// [reverseDuration] parameters.
-  final int animationDuration;
+  final Duration animationDuration;
 
   /// Forward duration for button pressed animation
   final Duration? forwardDuration;
@@ -234,26 +234,28 @@ class _NeoPopButtonState extends State<NeoPopButton>
 
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: getClipper(),
-      clipBehavior: Clip.hardEdge,
-      child: widget.enabled && widget.onTapUp != null
-          ? NeoPopButtonTranslator(
-              depth: getButtonDepth,
-              animationDuration: widget.animationDuration,
-              forwardDuration: widget.forwardDuration,
-              reverseDuration: widget.reverseDuration,
-              onTapUp: () => widget.onTapUp?.call(),
-              onTapDown: widget.onTapDown,
-              onLongPress: widget.onLongPress,
-              child: customPaintButton(),
-            )
-          : widget.onTapUp != null
-              ? GestureDetector(
-                  child: customPaintButton(),
-                  onTapUp: (_) => widget.onTapUp?.call(),
-                )
-              : customPaintButton(),
+    return RepaintBoundary(
+      child: ClipPath(
+        clipper: getClipper(),
+        clipBehavior: Clip.hardEdge,
+        child: widget.enabled && widget.onTapUp != null
+            ? NeoPopButtonTranslator(
+                depth: getButtonDepth,
+                animationDuration: widget.animationDuration,
+                forwardDuration: widget.forwardDuration,
+                reverseDuration: widget.reverseDuration,
+                onTapUp: () => widget.onTapUp?.call(),
+                onTapDown: widget.onTapDown,
+                onLongPress: widget.onLongPress,
+                child: customPaintButton(),
+              )
+            : widget.onTapUp != null
+                ? GestureDetector(
+                    child: customPaintButton(),
+                    onTapUp: (_) => widget.onTapUp?.call(),
+                  )
+                : customPaintButton(),
+      ),
     );
   }
 

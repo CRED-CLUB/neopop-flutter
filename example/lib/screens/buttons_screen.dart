@@ -36,46 +36,34 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
         children: [
-          const Expanded(flex: 4, child: SizedBox()),
+          const Expanded(flex: 5, child: SizedBox()),
           SvgPicture.asset('assets/svg/heading_buttons.svg'),
           const Expanded(flex: 4, child: SizedBox()),
-          SvgPicture.asset('assets/svg/text_win_button.svg'),
+          SvgPicture.asset('assets/svg/text_floating_tilted_button.svg'),
           const SizedBox(height: 15),
-          NeoPopButton(
-            color: kPopYellowColor,
-            bottomShadowColor: kShadowColorYellow,
-            rightShadowColor: kShadowColorYellow,
-            depth: kButtonDepth,
-            animationDuration: kButtonAnimationDuration,
-            buttonPosition: Position.bottomRight,
+          NeoPopTiltedButton(
+            isFloating: true,
             onTapUp: () => HapticFeedback.vibrate(),
             onTapDown: () => HapticFeedback.vibrate(),
-            child: ClipRRect(
-              child: NeoPopShimmer(
-                key: _shimmerKey,
-                enabled: true,
-                shimmerColor: kShimmerColor,
-                delay: const Duration(milliseconds: 500),
-                duration: const Duration(milliseconds: 1500),
-                shimmerWidth: 15.0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 70.0,
-                    vertical: 15,
-                  ),
-                  child: SvgPicture.asset('assets/svg/cta_text_play_now.svg'),
-                ),
+            decoration: const NeoPopTiltedButtonDecoration(
+              color: kPopYellowColor,
+              plunkColor: kPlunkColorYellow,
+              shadowColor: kTiltedButtonShadowColor,
+              showShimmer: true,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 70.0,
+                vertical: 15,
               ),
+              child: SvgPicture.asset('assets/svg/cta_text_play_now.svg'),
             ),
           ),
           const Expanded(child: SizedBox()),
-          SvgPicture.asset('assets/svg/text_bw_plunk.svg'),
+          SvgPicture.asset('assets/svg/text_non_floating_tilt_button.svg'),
           const SizedBox(height: 15),
-          NeoPopButton(
+          NeoPopTiltedButton(
             color: kPrimaryButtonColor,
-            depth: kButtonDepth,
-            animationDuration: kButtonAnimationDuration,
-            buttonPosition: Position.bottomRight,
             onTapUp: () => HapticFeedback.vibrate(),
             onTapDown: () => HapticFeedback.vibrate(),
             child: Padding(
@@ -87,7 +75,7 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
             ),
           ),
           const Expanded(child: SizedBox()),
-          SvgPicture.asset('assets/svg/text_scan_button.svg'),
+          SvgPicture.asset('assets/svg/text_stroke_button.svg'),
           const SizedBox(height: 18),
           NeoPopButton(
             color: kSecondaryButtonLightColor,
@@ -104,7 +92,7 @@ class _PopButtonScreenState extends State<PopButtonScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 50.0,
-                vertical: 13,
+                vertical: 15,
               ),
               child: SvgPicture.asset('assets/svg/cta_text_scan.svg'),
             ),
