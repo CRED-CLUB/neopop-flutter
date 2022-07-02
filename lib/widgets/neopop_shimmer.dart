@@ -8,6 +8,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:neopop/utils/constants.dart';
 
 /// A NeoPop style shimmer effect.
 ///
@@ -48,14 +49,14 @@ class NeoPopShimmer extends StatefulWidget {
   /// The tilt of the shimmer can be controlled by the [isTiltedLeft] property.
   /// By default the shimmer is tilted to the right.
   const NeoPopShimmer({
+    Key? key,
     required this.child,
-    this.duration = const Duration(seconds: 3),
+    this.duration = kShimmerDuration,
     this.enabled = false,
     this.isTiltedLeft = false,
-    this.shimmerWidth = 10.0,
-    this.shimmerColor = const Color.fromRGBO(255, 248, 229, 0.5),
-    this.delay = const Duration(seconds: 2),
-    Key? key,
+    this.shimmerWidth = kShimmerWidth,
+    this.shimmerColor = kShimmerColor,
+    this.delay = kShimmerDelay,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.

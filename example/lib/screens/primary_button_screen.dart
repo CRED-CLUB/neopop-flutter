@@ -26,8 +26,8 @@ class PopPrimaryBtnScreen extends StatelessWidget {
             depth: kButtonDepth,
             animationDuration: kButtonAnimationDuration,
             buttonPosition: Position.bottomRight,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
@@ -41,8 +41,8 @@ class PopPrimaryBtnScreen extends StatelessWidget {
             depth: kButtonDepth,
             animationDuration: kButtonAnimationDuration,
             buttonPosition: Position.center,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
@@ -60,8 +60,8 @@ class PopPrimaryBtnScreen extends StatelessWidget {
                 depth: kButtonDepth,
                 animationDuration: kButtonAnimationDuration,
                 buttonPosition: Position.bottomRight,
-                onTapUp: () => HapticFeedback.vibrate(),
-                onTapDown: () => HapticFeedback.vibrate(),
+                onTapUp: () => HapticFeedback.lightImpact(),
+                onTapDown: () => HapticFeedback.lightImpact(),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
@@ -75,8 +75,8 @@ class PopPrimaryBtnScreen extends StatelessWidget {
                 depth: kButtonDepth,
                 animationDuration: kButtonAnimationDuration,
                 buttonPosition: Position.center,
-                onTapUp: () => HapticFeedback.vibrate(),
-                onTapDown: () => HapticFeedback.vibrate(),
+                onTapUp: () => HapticFeedback.lightImpact(),
+                onTapDown: () => HapticFeedback.lightImpact(),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
@@ -93,8 +93,8 @@ class PopPrimaryBtnScreen extends StatelessWidget {
             depth: kButtonDepth,
             animationDuration: kButtonAnimationDuration,
             buttonPosition: Position.center,
-            onTapUp: () => HapticFeedback.vibrate(),
-            onTapDown: () => HapticFeedback.vibrate(),
+            onTapUp: () => HapticFeedback.lightImpact(),
+            onTapDown: () => HapticFeedback.lightImpact(),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 50.0, vertical: 10),

@@ -96,7 +96,7 @@ class _HomeScreenCta extends StatelessWidget {
       buttonPosition: Position.center,
       border: Border.all(color: kBorderColorWhite, width: kButtonBorderWidth),
       onTapUp: () => onTap(),
-      onTapDown: () => HapticFeedback.vibrate(),
+      onTapDown: () => HapticFeedback.lightImpact(),
       child: SizedBox(
         width: double.maxFinite,
         child: Padding(

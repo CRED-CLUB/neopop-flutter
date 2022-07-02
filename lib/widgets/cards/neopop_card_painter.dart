@@ -18,7 +18,7 @@ class NeoPopCardPainter extends CustomPainter {
   const NeoPopCardPainter({
     this.hShadowColor,
     this.vShadowColor,
-    this.depth = 3.0,
+    this.depth = kButtonDepth,
   });
 
   @override
