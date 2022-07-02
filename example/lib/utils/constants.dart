@@ -4,7 +4,7 @@ const kPageNavigationDuration = Duration(milliseconds: 300);
 const kPageNavigationCurve = Curves.easeInOut;
 
 const kButtonDepth = 3.0;
-const kButtonBorderWidth = 0.4;
+const kButtonBorderWidth = 0.5;
 const kButtonAnimationDuration = Duration(milliseconds: 200);
 
 const kBackgroundColor = Color.fromRGBO(13, 13, 13, 1);
