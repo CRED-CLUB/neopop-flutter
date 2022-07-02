@@ -24,3 +24,4 @@ const kShimmerColor = Color.fromRGBO(255, 255, 255, 0.90);
 const kCardColor = Color.fromRGBO(39, 72, 6, 1);
 const kCardVShadowColor = Color.fromRGBO(29, 55, 3, 1);
 const kCardHShadowColor = Color.fromRGBO(64, 100, 28, 1);
+const kTiltedButtonShadowColor = Color.fromRGBO(36, 36, 36, 1);
