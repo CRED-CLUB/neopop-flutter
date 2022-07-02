@@ -280,30 +280,3 @@ class _BlackButton extends StatelessWidget {
     );
   }
 }
-
-class _WhiteButton extends StatelessWidget {
-  const _WhiteButton({Key? key, this.position = Position.bottomRight})
-      : super(key: key);
-
-  final Position position;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: NeoPopButton(
-        color: kPrimaryButtonColor,
-        animationDuration: kButtonAnimationDuration,
-        parentColor: kShadowColorLightGrey,
-        grandparentColor: kBackgroundColor,
-        buttonPosition: position,
-        depth: kButtonDepth,
-        onTapUp: () => HapticFeedback.vibrate(),
-        onTapDown: () => HapticFeedback.vibrate(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
-          child: SvgPicture.asset('assets/svg/cta_text_button.svg'),
-        ),
-      ),
-    );
-  }
-}
