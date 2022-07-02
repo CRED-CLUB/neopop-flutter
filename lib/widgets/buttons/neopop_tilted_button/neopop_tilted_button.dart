@@ -10,7 +10,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:neopop/utils/color_utils.dart';
 import 'package:neopop/utils/constants.dart';
-import 'package:neopop/utils/safe_future.dart';
 
 part 'neopop_tilted_button_painter.dart';
 part 'neopop_tilted_button_clipper.dart';
