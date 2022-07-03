@@ -9,31 +9,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:neopop/utils/constants.dart';
+import 'package:neopop/widgets/shimmer/shimmer_painter.dart';
 
 /// A NeoPop style shimmer effect.
 ///
 /// The shimmer is painted on the [child] widget. The [shimmerColor]
 /// and [shimmerWidth] are used to paint the shimmer.
 ///
-/// By default the shimmer is in disabled state.
-///
-/// To create a shimmer:
-/// ```dart
-/// final shimmerKey = GlobalKey<PopShimmerState>();
-///
-/// PopShimmer(
-///   key: shimmerKey,
-///   enabled: true,
-///   child: child
-/// ),
-///```
-/// * To start the shimmer:
-/// `shimmerKey.currentState?.startShimmer();`
-///
-/// * To stop the shimmer
-/// `shimmerKey.currentState?.stopShimmer();`
-///
-/// ```
+/// By default the shimmer is in enabled state.
 class NeoPopShimmer extends StatefulWidget {
   /// Create NeoPop shimmer effect.
   ///
@@ -51,10 +34,12 @@ class NeoPopShimmer extends StatefulWidget {
   const NeoPopShimmer({
     Key? key,
     required this.child,
+    this.controller,
     this.duration = kShimmerDuration,
-    this.enabled = false,
+    this.enabled = true,
     this.isTiltedLeft = false,
     this.shimmerWidth = kShimmerWidth,
+    this.shimmerGapWidth = kShimmerGapWidth,
     this.shimmerColor = kShimmerColor,
     this.delay = kShimmerDelay,
   }) : super(key: key);
@@ -64,9 +49,12 @@ class NeoPopShimmer extends StatefulWidget {
   /// {@macro flutter.widgets.ProxyWidget.child}
   final Widget child;
 
+  /// Animation Controller for controlling the shimmer animation
+  final AnimationController? controller;
+
   /// The shimmer is enabled or disabled.
   ///
-  /// By default the shimmer is disabled.
+  /// By default the shimmer is enabled.
   final bool enabled;
 
   /// The shimmer is tilted to the left or right.
@@ -81,6 +69,12 @@ class NeoPopShimmer extends StatefulWidget {
   ///
   /// The default value is 10.0.
   final double shimmerWidth;
+
+  /// Space b/w the shimmer.
+  ///
+  /// This is the space b/w the two shimmer lines
+  /// defaulting to 5.0
+  final double shimmerGapWidth;
 
   /// The color of the shimmer.
   ///
@@ -99,23 +93,20 @@ class NeoPopShimmer extends StatefulWidget {
 
 class NeoPopShimmerState extends State<NeoPopShimmer>
     with SingleTickerProviderStateMixin {
-  AnimationController? _controller;
   Timer? _timer;
-
+  late AnimationController _controller;
   @override
   void initState() {
-    if (widget.enabled) {
-      _controller = AnimationController(vsync: this, duration: widget.duration);
-      _controller?.addStatusListener(_listener);
-      startShimmer();
-    }
-
+    _controller = widget.controller ??
+        AnimationController(vsync: this, duration: widget.duration);
+    _controller.addStatusListener(_listener);
+    if (widget.enabled) _controller.forward();
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _controller.dispose();
     _timer?.cancel();
     super.dispose();
   }
@@ -123,127 +114,35 @@ class NeoPopShimmerState extends State<NeoPopShimmer>
   void _listener(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
       _timer = Timer(widget.delay, () {
-        _controller?.reset();
-        _controller?.forward();
+        _controller.reset();
+        _controller.forward();
       });
     }
   }
 
-  /// Start the shimmer animation.
-  void startShimmer() {
-    _controller?.forward();
-  }
-
-  /// Stop the shimmer animation.
-  void stopShimmer() {
-    _controller?.stop();
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (!widget.enabled) {
-      return widget.child;
-    }
-    if (_controller != null) {
-      return AnimatedBuilder(
-        animation: _controller!,
+    return ClipRRect(
+      child: AnimatedBuilder(
+        animation: _controller,
         child: widget.child,
         builder: (context, child) {
           return LayoutBuilder(
             builder: (context, constraints) {
               return CustomPaint(
                 painter: ShimmerPainter(
-                  offset: _controller?.value ?? 0.0,
+                  offset: _controller.value,
                   isTiltedLeft: widget.isTiltedLeft,
                   shimmerWidth: widget.shimmerWidth,
                   shimmerColor: widget.shimmerColor,
+                  shimmerGapWidth: widget.shimmerGapWidth,
                 ),
                 child: child,
               );
             },
           );
         },
-      );
-    }
-    return const SizedBox();
-  }
-}
-
-/// CustomPainter that paints the shimmer lines
-class ShimmerPainter extends CustomPainter {
-  ShimmerPainter({
-    required this.offset,
-    required this.shimmerWidth,
-    required this.shimmerColor,
-    required this.isTiltedLeft,
-  });
-
-  /// The offset of the shimmer lines.
-  double offset;
-
-  /// The width of the shimmer lines.
-  final double shimmerWidth;
-
-  /// The color of the shimmer lines.
-  final Color shimmerColor;
-
-  /// Whether the lines are tilted to left or right.
-  final bool isTiltedLeft;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final double x = size.width * offset;
-    final double y = size.height;
-    const spaceWidth = 5.0;
-    final smallShimmerWidth = shimmerWidth / 2;
-
-    if (!isTiltedLeft) {
-      canvas.drawPath(
-        Path()
-          ..moveTo(x, y)
-          ..lineTo(x + shimmerWidth, 0)
-          ..lineTo(x + (2 * shimmerWidth), 0)
-          ..lineTo(x + shimmerWidth, y)
-          ..close(),
-        Paint()..color = shimmerColor,
-      );
-
-      final x1 = x + shimmerWidth + spaceWidth;
-      canvas.drawPath(
-        Path()
-          ..moveTo(x1, y)
-          ..lineTo(x1 + (2 * smallShimmerWidth), 0)
-          ..lineTo(x1 + (3 * smallShimmerWidth), 0)
-          ..lineTo(x1 + smallShimmerWidth, y)
-          ..close(),
-        Paint()..color = shimmerColor,
-      );
-    } else {
-      canvas.drawPath(
-        Path()
-          ..moveTo(x, 0)
-          ..lineTo(x + (2 * smallShimmerWidth), y)
-          ..lineTo(x + (3 * smallShimmerWidth), y)
-          ..lineTo(x + smallShimmerWidth, 0)
-          ..close(),
-        Paint()..color = shimmerColor,
-      );
-
-      final x1 = x + smallShimmerWidth + spaceWidth;
-      canvas.drawPath(
-        Path()
-          ..moveTo(x1, 0)
-          ..lineTo(x1 + shimmerWidth, y)
-          ..lineTo(x1 + (2 * shimmerWidth), y)
-          ..lineTo(x1 + shimmerWidth, 0)
-          ..close(),
-        Paint()..color = shimmerColor,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+      ),
+    );
   }
 }
