@@ -16,20 +16,6 @@ class PopButtonScreen extends StatefulWidget {
 }
 
 class _PopButtonScreenState extends State<PopButtonScreen> {
-  final _shimmerKey = GlobalKey<NeoPopShimmerState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _shimmerKey.currentState?.startShimmer();
-  }
-
-  @override
-  void dispose() {
-    _shimmerKey.currentState?.stopShimmer();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(

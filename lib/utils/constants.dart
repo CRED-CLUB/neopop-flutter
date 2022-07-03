@@ -30,6 +30,7 @@ const kTiltedButtonShimmerColor = Color(0xE6FFFFFF);
 const kTiltedButtonShimmerPlunkColor = Color(0x18FFFFFF);
 
 const kShimmerColor = Color(0x7EFFF8E5);
-const kShimmerWidth = 10.0;
-const kShimmerDuration = Duration(seconds: 3);
+const kShimmerWidth = 20.0;
+const kShimmerGapWidth = 5.0;
+const kShimmerDuration = Duration(seconds: 2);
 const kShimmerDelay = Duration(seconds: 2);
