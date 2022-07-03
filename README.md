@@ -2,6 +2,8 @@
 
 ![Banner](https://i.imgur.com/1gN3wzy.jpg "Banner")
 
+<br>
+
 **NeoPop** is CRED's inbuilt library for using NeoPop components in your app.
 
 What really is NeoPop?
@@ -14,7 +16,7 @@ Add `neopop` as a [dependency in your pubspec.yaml file](https://flutter.dev/usi
 
 ```yaml  
 dependencies:
-    neopop: <latest_version>
+    neopop: ^1.0.1
 ```  
 
 # NeoPopButton
@@ -64,7 +66,7 @@ NeoPopButton(
     child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
                 Text("Pay Now"),
             ],
@@ -76,44 +78,13 @@ NeoPopButton(
 ## Shimmer
 
 ```dart
-// init the key
-final _shimmerKey = GlobalKey<NeoPopShimmerState>();
-
-@override
-void initState() {
-    super.initState();
-    // start shimmer animation using key
-    _shimmerKey.currentState?.startShimmer();
-}
-
-@override
-void dispose() {
-    // stop shimmer animation using key
-    _shimmerKey.currentState?.stopShimmer();
-    super.dispose();
-}
-
-
-@override
-Widget build(BuildContext context) {
-    return NeoPopShimmer(
-        // assign the key
-        key: _shimmerKey,
-        enabled: true,
-        shimmerColor: kShimmerColor,
-        delay: const Duration(milliseconds: 500),
-        duration: const Duration(milliseconds: 1500),
-        shimmerWidth: 15.0,
-        child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 70.0,
-                vertical: 15,
-            ),
-            child: SvgPicture.asset('assets/svg/cta_text_play_now.svg'),
-        ),
-    );
-}
-
+const NeoPopShimmer(
+    shimmerColor: Colors.yellow,
+    child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+        child: Text("Hello"),
+    ),
+),
  ```  
 ## Flat Strokes
 
@@ -128,7 +99,7 @@ NeoPopButton(
     buttonPosition: Position.center,
     onTapUp: () {},
     border: const Border.fromBorderSide(
-    BorderSide(color: kBorderColorWhite, width: kButtonBorderWidth),
+        BorderSide(color: kBorderColorWhite, width: kButtonBorderWidth),
     ),
     child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -162,8 +133,8 @@ NeoPopButton(
     child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
                 Text("Scan & Pay", style: TextStyle(color: Colors.white)),
             ],
         ),
@@ -188,10 +159,10 @@ Column(
         buttonPosition: Position.fullBottom,
         onTapUp: () {},
         border: Border.all(
-            color: kBorderColorGreen, width: kButtonBorderWidth),
+            color: kBorderColorGreen, width: kButtonBorderWidth,
+        ),
         child:  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
                     child: Text(
                     "Button",
                     style: TextStyle(color: Colors.white),
@@ -199,12 +170,11 @@ Column(
             ),
         ),
         NeoPopButton(
-        color: kPrimaryButtonColor,
-        buttonPosition: Position.fullBottom,
-        onTapUp: () {},
-        child:  const Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
+            color: kPrimaryButtonColor,
+            buttonPosition: Position.fullBottom,
+            onTapUp: () {},
+            child:  const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
                 child: Text("Button"),
             ),
         ),
@@ -242,11 +212,11 @@ Row(
                 depth: kButtonDepth,
                 onTapUp: () {},
                 border: Border.all(
-                    color: kBorderColorGreen, width: kButtonBorderWidth),
+                    color: kBorderColorGreen, width: kButtonBorderWidth,
+                ),
                 child: const Center(
                 child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 15.0),
+                    padding: EdgeInsets.symmetric( horizontal: 8.0, vertical: 15.0),
                     child: Text(
                             "Button",
                             style: TextStyle(color: Colors.white),
@@ -437,7 +407,7 @@ Pull requests are welcome! We'd love help improving this library. Feel free to b
 
 ## License
 
-```md  
+```
 Copyright 2022 Dreamplug Technologies Private Limited.  
   
 Licensed under the Apache License, Version 2.0 (the "License");  
