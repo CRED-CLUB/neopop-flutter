@@ -1,7 +1,9 @@
 # NeoPop
 NeoPop is CRED's inbuilt library for using NeoPop components in your app.
 
-What really is NeoPop? NeoPop was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
+What really is NeoPop? 
+
+NeoPop was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
 
 
 ![Banner](https://i.imgur.com/1gN3wzy.jpg "Banner")
@@ -247,28 +249,29 @@ Row(
 
 
 ## Neopop button attributes
+
 | Attribute | Type | Description |  
-|--|--|--|  
-|`child` | `Widget` | child of button widget |
-|`color` |  `Color` | card color |
-| `depth` |  `double` | `default = 3`, the depth of the button if it is elevated |
-| `onTapUp` |  `VoidCallback?` | a callback triggered when the forward & reverse button animation is finished |
-| `onTapDown` |  `VoidCallback?` | a callback triggered as soon as the user clicks the `enabled` button |
-| `onLongPress` |  `VoidCallback?` | a callback triggered when user has long pressed the cta |
-| `disabledColor` |  `Color` | color of the button when it is disabled |
-| `parentColor` |  `Color`| `default - Colors.transparent`, immediate ancestor's color |
-| `grandparentColor` |  `Color` | 2nd level ancestor's color |
-| `buttonPosition` |  `Position` | `default - Position.fullBottom`, position of button in ref to parent view |
-| `animationDuration` |  `Duration` | `default - const Duration(milliseconds: 50)`, animation duration of the button click |
-| `forwardDuration` |  `Duration?` | if you want different forward duration for button click, use forwardDuration |
-| `reverseDuration` | `Duration?` | if you want different reverse duration for button click, use reverseDuration |
-| `border` |  `Border?` | The border to be painted around the button |
-| `enabled` |  `bool`, default - `true` |  If set to false, the button will be disabled |
-| `shadowColor` |  `Color?` | The base color of the shadow. The shadow colors will be derived from this |
-| `rightShadowColor` |  `Color?` |  The color of the right shadow. |
-| `leftShadowColor` |  `Color?` | The color of the left shadow. |
-| `topShadowColor` |  `Color?` | The color of the top shadow. |
-| `bottomShadowColor` |  `Color?` | The color of the bottom shadow. |
+|:---------------------|:-----------------|:-------------------|  
+| `child`              | `Widget`         | child of button widget |
+| `color`              |  `Color`         | card color |
+| `depth`              |  `double`        | `default = 3`, the depth of the button if it is elevated |
+| `onTapUp`            |  `VoidCallback?` | a callback triggered when the forward & reverse button animation is finished |
+| `onTapDown`          |  `VoidCallback?` | a callback triggered as soon as the user clicks the `enabled` button |
+| `onLongPress`        |  `VoidCallback?` | a callback triggered when user has long pressed the cta |
+| `disabledColor`      |  `Color`         | color of the button when it is disabled |
+| `parentColor`        |  `Color`         | `default - Colors.transparent`, immediate ancestor's color |
+| `grandparentColor`   |  `Color`         | 2nd level ancestor's color |
+| `buttonPosition`     |  `Position`      | `default - Position.fullBottom`, position of button in ref to parent view |
+| `animationDuration`  |  `Duration`      | `default - const Duration(milliseconds: 50)`, animation duration of the button click |
+| `forwardDuration`    |  `Duration?`     | if you want different forward duration for button click, use forwardDuration |
+| `reverseDuration`    | `Duration?`      | if you want different reverse duration for button click, use reverseDuration |
+| `border`             |  `Border?`       | The border to be painted around the button |
+| `enabled`            |  `bool`, default - `true` |  If set to false, the button will be disabled |
+| `shadowColor`        |  `Color?`        | The base color of the shadow. The shadow colors will be derived from this |
+| `rightShadowColor`   |  `Color?`        |  The color of the right shadow. |
+| `leftShadowColor`    |  `Color?`        | The color of the left shadow. |
+| `topShadowColor`     |  `Color?`        | The color of the top shadow. |
+| `bottomShadowColor`  |  `Color?`        | The color of the bottom shadow. |
 
 
 # NeoPopTiltedButton
@@ -367,20 +370,20 @@ NeoPopTiltedButton(
 ## NeoPopTiltedButton Attributes
 
 | Attribute | Type | Description |  
-|--|--|--|  
-|`child` | `Widget` | The child of the button |
-|`color` |  `Color?` | Color of the button |
-|`decoration` |  `NeoPopTiltedButtonDecoration?` | The decoration to paint the button. The `color` and `decoration` arguments cannot both be supplied, since it would potentially result in the decoration drawing over the background color. To supply a decoration with a color, use `decoration`. |
-| `buttonDepth` |  `double?` | The depth of the tilted button. `default: 8.0` |
-| `onTapUp` |  `VoidCallback?` | A callback triggered when a pointer that will trigger a tap with button has stopped contacting the screen |
-| `onTapDown` |  `VoidCallback?` | A callback triggered when a pointer that might cause a tap with button has contacted the screen |
-| `shadowDistance` | `double?` | The maximum distance from the button at which the shadow is painted. `default: 20` |
-|`yPosFactor` |  `double?` | Factor that defines the floating positions of buttons and shadow along vertical-axis. `default: 5` |
-|`isFloating` |  `bool` | Whether the button is floating. `default: false` |
-| `floatingDuration` |  `Duration?` | The duration of the floating animation. One floating cycle i.e to-and-fro movement of the button and shadow accounts for two floating durations. `default: Duration(milliseconds: 1500)` |
-| `floatingDelay` |  `Duration?` | The delay between two floating cycles. `default: Duration(milliseconds: 750)` |
-| `tapDuration` | `Duration?` | The duration of the animation when button is pressed or released. `default: Duration(milliseconds: 100)` |
-| `enabled` |  `bool` | Whether the button is enabled. `default: true` |
+|:--------------------|:---------------------------------|:----------------------------------|  
+| `child`             | `Widget`                         | The child of the button |
+| `color`             |  `Color?`                        | Color of the button |
+| `decoration`        |  `NeoPopTiltedButtonDecoration?` | The decoration to paint the button. The `color` and `decoration` arguments cannot both be supplied, since it would potentially result in the decoration drawing over the background color. To supply a decoration with a color, use `decoration`. |
+| `buttonDepth`       |  `double?`                       | The depth of the tilted button. `default: 8.0` |
+| `onTapUp`           |  `VoidCallback?`                 | A callback triggered when a pointer that will trigger a tap with button has stopped contacting the screen |
+| `onTapDown`         |  `VoidCallback?`                 | A callback triggered when a pointer that might cause a tap with button has contacted the screen |
+| `shadowDistance`    | `double?`                        | The maximum distance from the button at which the shadow is painted. `default: 20` |
+| `yPosFactor`        |  `double?`                       | Factor that defines the floating positions of buttons and shadow along vertical-axis. `default: 5` |
+| `isFloating`        |  `bool`                          | Whether the button is floating. `default: false` |
+| `floatingDuration`  |  `Duration?`                     | The duration of the floating animation. One floating cycle i.e to-and-fro movement of the button and shadow accounts for two floating durations. `default: Duration(milliseconds: 1500)` |
+| `floatingDelay`     |  `Duration?`                     | The delay between two floating cycles. `default: Duration(milliseconds: 750)` |
+| `tapDuration`       | `Duration?`                      | The duration of the animation when button is pressed or released. `default: Duration(milliseconds: 100)` |
+| `enabled`           | `bool`                           | Whether the button is enabled. `default: true` |
 
 
 
