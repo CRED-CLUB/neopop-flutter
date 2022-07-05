@@ -10,6 +10,8 @@ What really is NeoPop?
 
 NeoPop was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
 
+Check out the [neopop package](https://pub.dev/packages/neopop) at pub.dev.
+
 ## Installation
 
 Add `neopop` as a [dependency in your pubspec.yaml file](https://flutter.dev/using-packages/).
@@ -233,7 +235,7 @@ Row(
 
 | Attribute            | Type             | Description                                                                           |
 | :------------------- | :--------------- | :------------------------------------------------------------------------------------ |
-| `child`              | `Widget`         | THe child of button widget                                                            |
+| `child`              | `Widget`         | The child of button widget                                                            |
 | `color`              | `Color`          | Color of the button                                                                   |
 | `depth`              | `double`         | The depth of the button if it is elevated                                             |
 | `onTapUp`            | `VoidCallback?`  | Callback triggered when the forward & reverse button animation is finished            |
@@ -375,31 +377,7 @@ NeoPopTiltedButton(
 
 ## Contributors
 
-NeoPop would not have been possible if not for the contributions made by CRED's design and frontend teams. Specifically:
-
-- Bharat Sharma
-
-<a href="https://github.com/bharat-1809">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-</a>
-<a href="https://in.linkedin.com/in/bharat-sharma-1809">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-</a>
-<a href="https://twitter.com/_sifrant">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
-</a>
-
-- Aman Malhotra
-
-<a href="https://github.com/Aman-Malhotra">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-</a>
-<a href="https://www.linkedin.com/in/am-aman-malhotra/">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-</a>
-<a href="https://twitter.com/AmaN1999/">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
-</a>
+NeoPop would not have been possible if not for the contributions made by CRED's design and frontend teams.
 
 ## Contributing
 
