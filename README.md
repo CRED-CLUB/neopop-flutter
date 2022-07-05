@@ -10,7 +10,7 @@ What really is NeoPop?
 
 NeoPop was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
 
-Check out the [neopop package](https://pub.dev/packages/neopop) at pub.dev.
+*Checkout the [neopop package](https://pub.dev/packages/neopop) at pub.dev. For other platforms checkout [cred.club/neopop](https://cred.club/neopop)*
 
 ## Installation
 
