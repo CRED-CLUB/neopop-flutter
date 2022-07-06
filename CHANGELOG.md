@@ -1,3 +1,6 @@
+## 1.0.2 
+* Increase version support for dart & flutter
+
 ## 1.0.1
 
 * README update

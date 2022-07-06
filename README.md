@@ -14,7 +14,7 @@ Add `neopop` as a [dependency in your pubspec.yaml file](https://flutter.dev/usi
 
 ```yaml  
 dependencies:
-    neopop: ^1.0.1
+    neopop: ^1.0.2
 ```  
 
 # NeoPopButton
