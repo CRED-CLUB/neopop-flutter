@@ -1,16 +1,12 @@
-# NeoPop
+#NeoPOP
+NeoPOP is CRED's inbuilt library for using NeoPOP components in your app.
 
-![Banner](https://i.imgur.com/1gN3wzy.jpg "Banner")
-
-<br>
-
-**NeoPop** is CRED's inbuilt library for using NeoPop components in your app.
-
-What really is NeoPop?
-
-NeoPop was created with one simple goal, to create the next generation of the next beautiful, more affirmative, design system. neopop stays true to everything that design at CRED stands for.
+What really is NeoPOP? 
+NeoPOP was created with one simple goal, to create the next generation of a beautiful, affirmative design system. NeoPOP stays true to everything that design at CRED stands for.
 
 *Checkout the [neopop package](https://pub.dev/packages/neopop) at pub.dev. For other platforms checkout [cred.club/neopop](https://cred.club/neopop)*
+
+![Banner](https://i.imgur.com/1gN3wzy.jpg "Banner")
 
 ## Installation
 
@@ -55,7 +51,7 @@ NeoPopButton(
 ![Flat](https://user-images.githubusercontent.com/9965653/172597180-63b4c386-9b7c-4211-a64c-a79892232481.png "Flat Button")
 ![flatButton](https://user-images.githubusercontent.com/9965653/175874619-b5edb3e8-6c18-4f15-8e60-ef44cb004c94.gif)
 
-By specifying the `buttonPosition` as `Position.center`, neopop will compute right and bottom surface's color according to `color`.
+By specifying the `buttonPosition` as `Position.center`, NeoPOP will compute right and bottom surface's color according to `color`.
 Top and left surface's color is computed w.r.t `parentColor` and `grandparentColor`
 
 ``` dart
@@ -231,7 +227,7 @@ Row(
 ),
 ```
 
-## Neopop button attributes
+## NeoPOP button attributes
 
 | Attribute            | Type             | Description                                                                           |
 | :------------------- | :--------------- | :------------------------------------------------------------------------------------ |
@@ -374,10 +370,6 @@ NeoPopTiltedButton(
 | `enabled`           | `bool`                          | Whether the button is enabled. `default: true`                                                                                                                                                                                                    |
 
 <br>
-
-## Contributors
-
-NeoPop would not have been possible if not for the contributions made by CRED's design and frontend teams.
 
 ## Contributing
 
