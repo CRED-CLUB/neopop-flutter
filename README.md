@@ -4,11 +4,9 @@ NeoPOP is CRED's inbuilt library for using NeoPOP components in your app.
 ### What really is NeoPOP? 
 [NeoPOP](https://cred.club/neopop) was created with one simple goal; to create the next generation of a beautiful, affirmative design system. NeoPOP stays true to everything that design at CRED stands for.
 
-NeoPOP is built for [Android](https://github.com/CRED-CLUB/neopop-android), [iOS](https://github.com/CRED-CLUB/neopop-ios), Flutter and [Web](https://github.com/CRED-CLUB/neopop-web)
+NeoPOP is built for [Android](https://github.com/CRED-CLUB/neopop-android), [iOS](https://github.com/CRED-CLUB/neopop-ios), [Flutter](https://pub.dev/packages/neopop) and [Web](https://github.com/CRED-CLUB/neopop-web)
 
-*Checkout the [neopop package](https://pub.dev/packages/neopop) at pub.dev. For other platforms checkout [cred.club/neopop](https://cred.club/neopop)*
-
-![Banner](https://i.imgur.com/1gN3wzy.jpg "Banner")
+![NeoPOP Banner](https://i.imgur.com/1gN3wzy.jpg "NeoPOP Banner")
 
 ## Installation
 
@@ -229,7 +227,7 @@ Row(
 ),
 ```
 
-## NeoPOP button attributes
+## NeoPopButton Attributes
 
 | Attribute            | Type             | Description                                                                           |
 | :------------------- | :--------------- | :------------------------------------------------------------------------------------ |
