@@ -365,7 +365,8 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
     moveDown();
   }
 
-  void floatingOnTapCancel() {
+  Future<void> floatingOnTapCancel() async {
+    await moveUp();
     posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
     startFloating();
   }
