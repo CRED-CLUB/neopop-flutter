@@ -73,7 +73,7 @@ class NeoPopCard extends StatelessWidget {
       ),
       size: size ?? Size.zero,
       willChange: false,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: color,
           border: borderColor != null

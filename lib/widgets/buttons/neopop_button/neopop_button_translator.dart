@@ -8,6 +8,12 @@
 part of 'neopop_button.dart';
 
 /// A widget with [GestureDetector] that forms the basis of the [NeoPopButton].
+///
+/// This widget is responsible for translation of [NeoPopButton] or this is
+/// responsible for depth effect animation.
+///
+/// This widget translates the child in x and y with value [depth] on the basis
+/// of current animation value.
 class NeoPopButtonTranslator extends StatefulWidget {
   const NeoPopButtonTranslator({
     required this.child,
@@ -52,8 +58,6 @@ class _NeoPopButtonTranslatorState extends State<NeoPopButtonTranslator>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      lowerBound: 0,
-      upperBound: 1,
       duration: widget.forwardDuration ??
           Duration(milliseconds: widget.animationDuration.inMilliseconds ~/ 2),
       reverseDuration: widget.reverseDuration ??
@@ -101,11 +105,12 @@ class _NeoPopButtonTranslatorState extends State<NeoPopButtonTranslator>
             },
       child: AnimatedBuilder(
         animation: controller,
+        child: widget.child,
         builder: (BuildContext context, Widget? child) {
           final double depth = widget.depth * controller.value;
           return Transform.translate(
             offset: Offset(depth, depth),
-            child: widget.child,
+            child: child,
           );
         },
       ),

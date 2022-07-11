@@ -97,11 +97,11 @@ class NeoPopShimmerState extends State<NeoPopShimmer>
   late AnimationController _controller;
   @override
   void initState() {
+    super.initState();
     _controller = widget.controller ??
         AnimationController(vsync: this, duration: widget.duration);
     _controller.addStatusListener(_listener);
     if (widget.enabled) _controller.forward();
-    super.initState();
   }
 
   @override

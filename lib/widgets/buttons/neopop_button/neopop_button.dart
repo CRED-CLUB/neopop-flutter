@@ -9,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:neopop/utils/color_utils.dart';
 import 'package:neopop/utils/constants.dart';
 
-part 'neopop_button_utils.dart';
 part 'neopop_button_clippers.dart';
-part 'neopop_button_translator.dart';
 part 'neopop_button_painter.dart';
+part 'neopop_button_translator.dart';
+part 'neopop_button_utils.dart';
 
 /// A neopop design button.
 ///
 /// Use this to implement neopop design button in your layouts. This can be used
 /// on normal surfaces like cards, dialogs, etc as well as on [NeoPopCard].
 ///
-/// A [NeoPopButton] is a custom painted container wrapped with a [ClipPath].
+/// A [NeoPopButton] is a custom painted [DecoratedBox] wrapped with a [ClipPath].
 /// The painter and clipper depends on the position of the [NeoPopButton] in
 /// the layout. The [NeoPopButton] can be positioned in one of the 12 positions defined
 /// in the enum [Position]. You can imagine nine of the twelve positions as being
@@ -197,12 +197,6 @@ class _NeoPopButtonState extends State<NeoPopButton>
     implements NeoPopButtonParent {
   late Color ctaColor;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setCtaColor();
-  }
-
   void setCtaColor() {
     if (widget.onTapUp == null) {
       ctaColor = widget.disabledColor;
@@ -226,7 +220,7 @@ class _NeoPopButtonState extends State<NeoPopButton>
         getBottomColor(),
         getRightColor(),
       ),
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(color: ctaColor, border: widget.border),
         child: widget.child,
       ),
