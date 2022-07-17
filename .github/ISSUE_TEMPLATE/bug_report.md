@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: There is a problem in NeoPOP lib
+about: There is an issue in NeoPOP library
 title: ''
 labels: 'status: triage, type: bug'
 assignees: ''
