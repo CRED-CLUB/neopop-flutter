@@ -11,10 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:neopop/utils/color_utils.dart';
 import 'package:neopop/utils/constants.dart';
 
-part 'neopop_tilted_button_painter.dart';
 part 'neopop_tilted_button_clipper.dart';
-part 'neopop_tilted_button_shadow_painter.dart';
 part 'neopop_tilted_button_decoration.dart';
+part 'neopop_tilted_button_painter.dart';
+part 'neopop_tilted_button_shadow_painter.dart';
 part 'shimmer/neopop_tilted_button_shimmer.dart';
 part 'shimmer/neopop_tilted_button_shimmer_painter.dart';
 
@@ -178,6 +178,7 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
 
   @override
   void initState() {
+    super.initState();
     posFactor = widget.yPosFactor ?? kTiltedButtonYPosFactor;
     decoration = widget.decoration ??
         (widget.color != null
@@ -199,8 +200,6 @@ class _NeoPopTiltedButtonState extends State<NeoPopTiltedButton>
 
     bool enabled = widget.enabled || widget.onTapUp != null;
     if (enabled && widget.isFloating) startFloating();
-
-    super.initState();
   }
 
   @override
